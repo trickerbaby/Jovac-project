@@ -93,37 +93,40 @@
     <div class="nav-item-alt">all quotes</div>
   </div>
 
-  <div class="insert-container">
-    <!-- This is where the form will be inserted using JavaScript -->
-  </div>
-
   <div class="data-container">
     <!-- Display the received data here -->
   </div>
 
   <!-- Rest of your content goes here -->
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Function to fetch the data from the server and display it
+      const fetchData = () => {
+        fetch('/data')
+          .then((response) => response.json())
+          .then((data) => {
+            // Update the data-container with the received data
+            const dataContainer = document.querySelector('.data-container');
+            dataContainer.innerHTML = '';
+
+            data.forEach((item) => {
+              const quoteDiv = document.createElement('div');
+              quoteDiv.className = 'quote-item';
+              quoteDiv.innerHTML = `
+                <p>Author: ${item['author-name']}</p>
+                <p>Quote: ${item['quote']}</p>
+              `;
+              dataContainer.appendChild(quoteDiv);
+            });
+          })
+          .catch((error) => {
+            console.error('Error:', error);
+          });
+      };
+
+      // Call the fetchData function on page load
+      fetchData();
+    });
+  </script>
 </body>
 </html>
-<script>
-  document.addEventListener('DOMContentLoaded', () => {
-    // Function to fetch the data from the server and display it
-    const fetchData = () => {
-      fetch('/data')
-        .then((response) => response.json())
-        .then((data) => {
-          // Update the data-container with the received data
-          const dataContainer = document.querySelector('.data-container');
-          dataContainer.innerHTML = `
-            <p>Author: ${data['author-name']}</p>
-            <p>Quote: ${data['quote']}</p>
-          `;
-        })
-        .catch((error) => {
-          console.error('Error:', error);
-        });
-    };
-
-    // Call the fetchData function on page load
-    fetchData();
-  });
-</script>
