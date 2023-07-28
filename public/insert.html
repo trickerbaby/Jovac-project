@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Quotes Page</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+    }
+
+    /* Dark green navbar */
+    .navbar {
+      background-color: darkgreen;
+      color: white;
+      display: flex;
+      justify-content: space-between;
+      padding: 10px;
+    }
+
+    /* Div containing "Great quote" */
+    .nav-item {
+      color: darkgreen;
+      background-color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+    }
+
+    /* Div containing "new quote" and "all quotes" */
+    .nav-item-alt {
+      color: darkgreen;
+      background-color: white;
+      padding: 5px 10px;
+      border-radius: 5px;
+      margin-left: 10px;
+    }
+    
+     .input-container {
+      background-color: green; /* Set container background color to green */
+      padding: 20px;
+      max-width: 400px;
+      margin: 50px auto;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+    }
+
+    /* Styling for labels and input fields */
+    label {
+      display: block;
+      margin-bottom: 10px;
+      color: white; /* Set label text color to white */
+    }
+
+    input[type="text"] {
+      width: 100%;
+      padding: 10px;
+      border: 1px solid green; /* Set input field border color to green */
+      border-radius: 5px;
+    }
+
+    input[type="submit"] {
+      background-color: white; /* Set button background color to white */
+      color: green; /* Set button text color to green */
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+    }
+
+    input[type="submit"]:hover {
+      background-color: lightgreen; /* Set button background color on hover */
+    }
+  </style>
+</head>
+<body>
+  <div class="navbar">
+    <div class="nav-item">Great quote</div>
+    <div class="nav-item-alt">new quote</div>
+    <div class="nav-item-alt">all quotes</div>
+  </div>
+
+  <div class="input-container">
+    <form id="quote-form" action="/submit" method="post">
+      <label for="author-name">Author Name:</label>
+      <input type="text" id="author-name" name="author-name" required>
+
+      <label for="quote">Quote:</label>
+      <input type="text" id="quote" name="quote" required>
+
+      <input type="submit" value="Submit">
+    </form>
+  </div>
+
+  <!-- Rest of your content goes here -->
+</body>
+</html>
